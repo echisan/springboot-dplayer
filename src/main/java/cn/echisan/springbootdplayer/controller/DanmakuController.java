@@ -44,15 +44,7 @@ public class DanmakuController {
         try {
             List<DanmakuEntity> danmakuEntityList = danmakuService.listDanmakuById(id, max);
             if (danmakuEntityList != null && danmakuEntityList.size() != 0) {
-
-
-                List<Object[]> data = new ArrayList<>();
-                // 遍历
-                for (DanmakuEntity de:danmakuEntityList){
-                    Object[] danmaku = {de.getTime(),parseTypeToInt(de.getType()),de.getColor(),de.getAuthor(),de.getText()};
-                    data.add(danmaku);
-                }
-                responseEntity.setDanmaku(data);
+                responseEntity.setDanmaku(parseDanmakuListToArray(danmakuEntityList));
             } else {
                 responseEntity.setDanmaku(new ArrayList<>());
             }
@@ -144,6 +136,11 @@ public class DanmakuController {
         return StringUtils.isEmpty(string);
     }
 
+    /**
+     * 将弹幕type转成int
+     * @param type 弹幕type
+     * @return 弹幕代号
+     */
     private int parseTypeToInt(String type){
         if (type.equals("right")){
             return 0;
@@ -157,6 +154,11 @@ public class DanmakuController {
         return 0;
     }
 
+    /**
+     * 将弹幕数据包装成dplayer能识别的格式
+     * @param danmakuEntities 弹幕列表
+     * @return 弹幕列表
+     */
     private List<Object[]> parseDanmakuListToArray(List<DanmakuEntity> danmakuEntities){
         List<Object[]> data = new ArrayList<>();
         if (danmakuEntities!=null && danmakuEntities.size()!=0){
