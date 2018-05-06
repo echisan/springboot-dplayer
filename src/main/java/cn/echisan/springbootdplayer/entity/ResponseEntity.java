@@ -5,7 +5,7 @@ import java.util.List;
 public class ResponseEntity {
     private Integer code;
     private String msg;
-    private List<DanmakuEntity> data;
+    private List<Object[]> danmaku;
 
     public Integer getCode() {
         return code;
@@ -23,11 +23,11 @@ public class ResponseEntity {
         this.msg = msg;
     }
 
-    public List<DanmakuEntity> getData() {
-        return data;
+    public List<Object[]> getDanmaku() {
+        return danmaku;
     }
 
-    public void setData(List<DanmakuEntity> data) {
-        this.data = data;
+    public void setDanmaku(List<Object[]> danmaku) {
+        this.danmaku = danmaku;
     }
 }

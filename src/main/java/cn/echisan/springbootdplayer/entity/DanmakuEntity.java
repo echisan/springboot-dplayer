@@ -16,7 +16,7 @@ public class DanmakuEntity implements Serializable {
     /**
      * 弹幕发送时间
      */
-    private String time;
+    private double time;
     /**
      * 弹幕正文
      */
@@ -43,7 +43,6 @@ public class DanmakuEntity implements Serializable {
     /**
      * 弹幕池id
      */
-    @JsonIgnore
     private String player;
 
     /**
@@ -60,11 +59,11 @@ public class DanmakuEntity implements Serializable {
         this.id = id;
     }
 
-    public String getTime() {
+    public double getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(double time) {
         this.time = time;
     }
 

@@ -30,7 +30,9 @@ public class DanmakuServiceTest {
         danmakuEntity.setPlayer("plentymore");
         danmakuEntity.setAuthor("aaaaa");
         danmakuEntity.setColor("#cccc");
-        danmakuEntity.setTime("12.21");
+        danmakuEntity.setTime(11.712759);
+        danmakuEntity.setType("right");
+        danmakuEntity.setText("难受啊飞");
 
         danmakuService.saveDanmaku(danmakuEntity);
         System.out.println("==========存入一条数据=============");
