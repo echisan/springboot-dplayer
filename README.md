@@ -11,6 +11,7 @@
 
 ## 安装
 打包使用maven，所以需要先安装好maven
+
 在根目录下，即有pom.xml文件的目录下执行
 ```
 mvn package -Dmaven.test.skip=true
