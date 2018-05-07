@@ -4,11 +4,27 @@
 * jdk 1.8
 * mongodb
 * redis
+* maven
 
 ### api: http://api.echisan.cn/dplayer/
 ### 演示地址: http://dplayer.echisan.cn/
 
+## 安装
+打包使用maven，所以需要先安装好maven
+在根目录下，即有pom.xml文件的目录下执行
+```
+mvn package -Dmaven.test.skip=true
+```
+
+默认打包成jar，想打包成war的可自行搜索
+
+## 运行
+```java
+java -jar springboot-player.jar
+```
+
 ## 使用
+不支持获取b站弹幕,其他用法一致
 ```javascript
 const dp = new DPlayer({
             container:document.getElementById('dplayer'),
@@ -16,9 +32,10 @@ const dp = new DPlayer({
                 url:'http://danmaku.echisan.cn/static/video/the-day.mp4'
             },
             danmaku:{
-				        id:'thedaydanmaku',
+		id:'thedaydanmaku',
                 api:'http://api.echisan.cn/dplayer/',
-				        user:'echisan'
+		user:'echisan'
             }
         });
 ```
+
