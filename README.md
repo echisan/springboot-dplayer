@@ -44,3 +44,22 @@ const dp = new DPlayer({
 
 ## update log
 * 新增了基于jwt的token验证，需要把token放到请求头上，请求头key为`Authorization`，值为`Bearer {token}`
+
+token
+```json
+# header
+{
+  "typ": "JWT",
+  "alg": "HS512"
+}
+# payload
+{
+  "loc": 0,
+  "sub": "gaygui2",
+  "ema": 0,
+  "iss": "DMCollection",
+  "exp": 1527415398,
+  "iat": 1526983398,
+  "rol": "ROLE_USER"
+}
+```
