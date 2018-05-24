@@ -9,6 +9,7 @@ public class ResponseType {
     public static final int ILLEGAL_TOKEN = 4;
     public static final int BLACK_USER = 5;
     public static final int DATABASE_ERROR = -1;
+    public static final int PERMISSION_DENY = 6;
 
 
 

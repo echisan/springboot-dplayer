@@ -6,10 +6,7 @@ import org.springframework.util.ResourceUtils;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -96,5 +93,17 @@ public class GeneralUtils {
             logger.info("黑名单文件不存在");
             return blackList;
         }
+    }
+
+    public static List<String> loadBlackListInJar(Class controllerClazz) throws IOException {
+        List<String> blackList = new ArrayList<>();
+        InputStream is = controllerClazz.getResourceAsStream(ResourceUtils.CLASSPATH_URL_PREFIX+"blacklist");
+        Reader reader = new InputStreamReader(is);
+        BufferedReader br = new BufferedReader(reader);
+        String str = "";
+        while ((str = br.readLine())!=null){
+            blackList.add(str);
+        }
+        return blackList;
     }
 }
