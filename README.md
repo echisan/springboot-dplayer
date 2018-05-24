@@ -40,3 +40,7 @@ const dp = new DPlayer({
         });
 ```
 
+***
+
+## update log
+* 新增了基于jwt的token验证，需要把token放到请求头上，请求头key为`Authorization`，值为`Bearer {token}`
