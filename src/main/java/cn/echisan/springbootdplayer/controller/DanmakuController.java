@@ -8,12 +8,11 @@ import cn.echisan.springbootdplayer.entity.ResponseEntity;
 import cn.echisan.springbootdplayer.service.IDanmakuService;
 import cn.echisan.springbootdplayer.utils.GeneralUtils;
 import cn.echisan.springbootdplayer.utils.JwtTokenUtils;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.util.ResourceUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +20,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -70,8 +68,8 @@ public class DanmakuController {
 
     @CrossOrigin
     @PostMapping
-    public ResponseEntity postDanmaku(@RequestBody DanmakuEntity de,
-                                      HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public ResponseEntity postDanmaku(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
         ResponseEntity responseEntity = new ResponseEntity();
 
         // 先验证token
@@ -90,6 +88,9 @@ public class DanmakuController {
             responseEntity.setCode(ResponseType.PERMISSION_DENY);
             return responseEntity;
         }
+
+
+        DanmakuEntity de = new ObjectMapper().readValue(request.getInputStream(), DanmakuEntity.class);
 
         String author = de.getAuthor();
         String color = de.getColor();
