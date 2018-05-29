@@ -71,10 +71,16 @@ public class DanmakuController {
     public ResponseEntity postDanmaku(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         ResponseEntity responseEntity = new ResponseEntity();
+        DanmakuEntity de = new ObjectMapper().readValue(request.getInputStream(), DanmakuEntity.class);
 
         // 先验证token
         String header = request.getHeader(SecurityConstants.TOKEN_HEADER_AUTHORIZATION);
-        if (header == null) {
+        // 由于可能发送弹幕时无法在请求头上加入token，因此再从请求参数中获取
+        if (header == null){
+            header = de.getToken();
+        }
+        // 先不判断了，需要判断的可以将以下取消注释
+        /*if (header == null) {
             response.setStatus(HttpServletResponse.SC_FORBIDDEN);
             responseEntity.setMsg("请先登录后再发弹幕");
             responseEntity.setCode(ResponseType.PERMISSION_DENY);
@@ -87,10 +93,10 @@ public class DanmakuController {
             responseEntity.setMsg("无效的登录凭证或该凭证已过期，请重新登录");
             responseEntity.setCode(ResponseType.PERMISSION_DENY);
             return responseEntity;
-        }
+        }*/
 
 
-        DanmakuEntity de = new ObjectMapper().readValue(request.getInputStream(), DanmakuEntity.class);
+
 
         String author = de.getAuthor();
         String color = de.getColor();

@@ -46,6 +46,11 @@ public class DanmakuEntity implements Serializable {
     private String player;
 
     /**
+     * token令牌
+     */
+    private String token;
+
+    /**
      * 请求的域名
      */
     @JsonIgnore
@@ -123,17 +128,27 @@ public class DanmakuEntity implements Serializable {
         this.referer = referer;
     }
 
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
     @Override
     public String toString() {
         return "DanmakuEntity{" +
                 "id='" + id + '\'' +
-                ", time='" + time + '\'' +
+                ", time=" + time +
                 ", text='" + text + '\'' +
                 ", color='" + color + '\'' +
                 ", type='" + type + '\'' +
                 ", ipAddress='" + ipAddress + '\'' +
                 ", author='" + author + '\'' +
                 ", player='" + player + '\'' +
+                ", token='" + token + '\'' +
+                ", referer='" + referer + '\'' +
                 '}';
     }
 }
