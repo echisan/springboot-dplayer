@@ -8,6 +8,7 @@
 
 ### api: http://api.echisan.cn/dplayer/
 ### 演示地址: http://dplayer.echisan.cn/
+### 演示地址：https://darker.me/
 
 ## 安装
 打包使用maven，所以需要先安装好maven
