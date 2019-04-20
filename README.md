@@ -1,5 +1,6 @@
 # springboot-dplayer
 使用java实现的dplayer弹幕接口后端
+# 找个机会重构一下
 ## 环境依赖
 * jdk 1.8
 * mongodb
